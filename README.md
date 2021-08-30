@@ -1,4 +1,4 @@
-# osgi-starterkit
+# docker-osgi-starterkit
 
 Build the container with 
 
