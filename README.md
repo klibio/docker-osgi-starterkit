@@ -25,4 +25,6 @@ docker container run \
 execute osgi shell commands e.g.
 ```bash
 osgi> help
+...
+osgi> exit
 ```
