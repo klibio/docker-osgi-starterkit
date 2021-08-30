@@ -1,7 +1,7 @@
 name: 'Build and publish to Docker Hub'
 
 env:
-   NAME: "klibio/example.bnd.rcp:"
+   NAME: "klibio/osgi-starterkit"
 
 on:
   workflow_dispatch:
