@@ -27,4 +27,5 @@ execute osgi shell commands e.g.
 osgi> help
 ...
 osgi> exit
+Really want to stop Equinox? (y/n; default=y)
 ```
