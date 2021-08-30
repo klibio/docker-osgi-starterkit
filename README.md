@@ -9,17 +9,17 @@ docker build \
   --progress=plain \
   --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
   --build-arg VCS_REF=$(git rev-list -1 HEAD) \
-  -t osgi-starterkit:latest \
+  -t klibio/osgi-starterkit:latest \
   .
 ```
-and run container interactively
+and/or run container interactively
 
 ```bash
 #!/bin/bash
 docker container run \
     --name osgi \
     --rm \
-    -it osgi-starterkit:latest
+    -it klibio/osgi-starterkit
 ```
 
 execute osgi shell commands e.g.
