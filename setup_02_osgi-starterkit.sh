@@ -1,18 +1,19 @@
 #!/bin/bash
-set -eux && scriptDir="$( cd $( dirname ${BASH_SOURCE[0]} ) >/dev/null 2>&1 && pwd )"
+set -eux && SCRIPT_DIR="$( cd $( dirname ${BASH_SOURCE[0]} ) >/dev/null 2>&1 && pwd )"
 
 # this script downloads and prepares the osgi starterkit for cmd line p2.director usage
 echo "download and extract OSGi-starterkit"
+cd $SCRIPT_DIR
 BINARY_URL='https://www.eclipse.org/downloads/download.php?file=/equinox/drops/R-4.20-202106111600/EclipseRT-OSGi-StarterKit-4.20-linux-gtk-x86_64.tar.gz&r=1'
 curl -LfsSo starterkit.tar.gz ${BINARY_URL}
 tar -xvzf starterkit.tar.gz
-mv ${scriptDir}/rt/ ${scriptDir}/osgi/
+mv ${SCRIPT_DIR}/rt/ ${SCRIPT_DIR}/osgi/
 rm -rf starterkit.tar.gz
 
 # download and configure additional bundles required for p2.director cmd line usage
 function downloadBundle {
     echo -e "# downloading $1\n"
-    curl -LfsSo ${scriptDir}/osgi/plugins/$1 ${ECL_PLATFORM}/$1
+    curl -LfsSo ${SCRIPT_DIR}/osgi/plugins/$1 ${ECL_PLATFORM}/$1
 }
 
 ECL_PLATFORM="https://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600/plugins"
@@ -27,7 +28,7 @@ downloadBundle $DIRECTOR_BUNDLE
 CONTENTYPE_BUNDLE="org.eclipse.core.contenttype_3.7.1000.v20210409-1722.jar"
 downloadBundle $CONTENTYPE_BUNDLE
 
-CONFIG_FILE=${scriptDir}/osgi/configuration/config.ini
+CONFIG_FILE=${SCRIPT_DIR}/osgi/configuration/config.ini
 # add core.runtime and p2.director.app to config.ini (must be before formatting)
 sed -i 's/p2.director_2.5.0.v20210325-0750.jar@4,reference/p2.director_2.5.0.v20210325-0750.jar@4,reference\\:file\\:'${RUNTIME_BUNDLE}'@4:start,reference\\:file\\:'${CONTENTYPE_BUNDLE}'@4,reference\\:file\\:'${DIRECTOR_BUNDLE}'@4,reference\\:file\\:'${NET_BUNDLE}'@4,reference/g' ${CONFIG_FILE}
 # format config.ini file

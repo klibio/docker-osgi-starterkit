@@ -1,4 +1,4 @@
-# io.klib.docker.osgi-starterkit
+# osgi-starterkit
 
 Build the container with 
 
