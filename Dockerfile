@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.11_9-debianslim
+FROM debian:buster-slim
 
 ARG VERSION=0.1.0
 ARG BUILD_DATE
@@ -24,9 +24,9 @@ RUN groupadd --gid 1000 app && \
     echo $VERSION.$BUILD_DATE > /data/build_$VERSION.$BUILD_DATE.txt
 
 COPY setup_* /data
-RUN set -eux; \
-    cd /data && \
+RUN cd /data && \
     ./setup_01_java.sh && \
     ./setup_02_osgi-starterkit.sh
+ENV PATH=/data/jre/bin:$PATH
 
 CMD ["data/osgi/rt"]
