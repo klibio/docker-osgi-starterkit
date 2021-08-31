@@ -14,18 +14,6 @@ This repo is providing the [Eclipse Equinox OSGi starter kits](https://www.eclip
 [![OpenIssues](https://img.shields.io/github/issues-raw/klibio/docker-osgi-starterkit)](https://github.com/klibio/docker-osgi-starterkit/issues?q=is%3Aopen+is%3Aissue)
 [![OpenPullRequests](https://img.shields.io/github/issues-pr-raw/klibio/docker-osgi-starterkit)](https://github.com/klibio/docker-osgi-starterkit/pulls?q=is%3Aopen+is%3Apr)
 
-## building
-```bash
-#!/bin/bash
-docker build \
-  --no-cache \
-  --progress=plain \
-  --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
-  --build-arg VCS_REF=$(git rev-list -1 HEAD) \
-  --build-arg VERSION=`cat version.txt` \
-  -t klibio/osgi-starterkit:latest \
-  .
-```
 ## using interactively
 ```bash
 #!/bin/bash
@@ -41,4 +29,17 @@ osgi> help
 ...
 osgi> exit
 Really want to stop Equinox? (y/n; default=y)
+```
+
+## building
+```bash
+#!/bin/bash
+docker build \
+  --no-cache \
+  --progress=plain \
+  --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+  --build-arg VCS_REF=$(git rev-list -1 HEAD) \
+  --build-arg VERSION=`cat version.txt` \
+  -t klibio/osgi-starterkit:latest \
+  .
 ```
