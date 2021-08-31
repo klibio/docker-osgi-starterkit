@@ -1,7 +1,7 @@
 name: 'Build and publish to Docker Hub'
 
 env:
-   NAME: "klibio/osgi-starterkit"
+   NAME: "klibio/docker-osgi-starterkit"
 
 on:
   workflow_dispatch:
