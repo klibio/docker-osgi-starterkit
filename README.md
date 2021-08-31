@@ -5,7 +5,7 @@ This repo is providing the [Eclipse Equinox OSGi starter kits](https://www.eclip
 [![Eclipse OSGi starter kit version](https://img.shields.io/badge/Eclipse%20OSGi%20starter%20kit%20version-R--4.20--202106111600-blue)](https://download.eclipse.org/equinox/drops/R-4.20-202106111600/)
 
 ## container
-[![GitHub](https://img.shields.io/github/license/klibio/docker-osgi-starterkit)](https://www.eclipse.org/legal/epl-2.0/)
+[![GitHub](https://img.shields.io/github/license/klibio/docker-osgi-starterkit)](https://raw.githubusercontent.com/klibio/docker-osgi-starterkit/main/LICENSE)
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/klibio/osgi-starterkit)](https://hub.docker.com/r/klibio/osgi-starterkit)
 [![build and docker publish](https://github.com/klibio/docker-osgi-starterkit/actions/workflows/actions_build.yml/badge.svg)](https://github.com/klibio/docker-osgi-starterkit/workflows/actions_build.yml/badge.svg?branch=main)
 
