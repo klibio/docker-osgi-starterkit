@@ -9,16 +9,17 @@ fi
 # activate bash checks for unset vars, pipe fails
 set -eauo pipefail
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 DATE=$(date +'%Y.%m.%d-%H.%M.%S')
 IMAGE="klibio/osgi-starterkit"
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
+VERSION=0.1.0
 echo "# launching docker build for image $IMAGE at $DATE"
 docker build \
   --no-cache \
   --progress=plain \
   --build-arg BUILD_DATE=$DATE \
   --build-arg VCS_REF=$(git rev-list -1 HEAD) \
-  -t "$IMAGE:$DATE" \
+  -t "$IMAGE:$VERSION.$DATE" \
   -t "$IMAGE:latest" \
   .
 
