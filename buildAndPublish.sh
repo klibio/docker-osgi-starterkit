@@ -9,22 +9,24 @@ fi
 # activate bash checks for unset vars, pipe fails
 set -eauo pipefail
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 DATE=$(date +'%Y.%m.%d-%H.%M.%S')
 IMAGE="klibio/osgi-starterkit"
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-echo "# launching docker build for image $IMAGE at $DATE"
+VERSION=`cat version.txt`
+echo "# launching docker build for image $IMAGE:$VERSION.$DATE"
 docker build \
   --no-cache \
   --progress=plain \
   --build-arg BUILD_DATE=$DATE \
   --build-arg VCS_REF=$(git rev-list -1 HEAD) \
-  -t "$IMAGE:$DATE" \
+  --build-arg VERSION=$VERSION \
+  -t "$IMAGE:$VERSION.$DATE" \
   -t "$IMAGE:latest" \
   .
 
 echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push "$IMAGE:$DATE"
-echo "# successfully pushed $IMAGE:$DATE to DockerHub https://hub.docker.com/r/$IMAGE"
+docker push "$IMAGE:$VERSION.$DATE"
+echo "# successfully pushed $IMAGE:$VERSION.$DATE to DockerHub https://hub.docker.com/r/$IMAGE"
 if [ "$BRANCH" = "main" ]; then
   docker push "$IMAGE:latest"
   echo "# successfully updated $IMAGE:latest image on DockerHub https://hub.docker.com/r/$IMAGE"
