@@ -12,13 +12,14 @@ set -eauo pipefail
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 DATE=$(date +'%Y.%m.%d-%H.%M.%S')
 IMAGE="klibio/osgi-starterkit"
-VERSION=0.1.0
-echo "# launching docker build for image $IMAGE at $DATE"
+VERSION=`cat version.txt`
+echo "# launching docker build for image $IMAGE:$VERSION.$DATE"
 docker build \
   --no-cache \
   --progress=plain \
   --build-arg BUILD_DATE=$DATE \
   --build-arg VCS_REF=$(git rev-list -1 HEAD) \
+  --build-arg VERSION=$VERSION \
   -t "$IMAGE:$VERSION.$DATE" \
   -t "$IMAGE:latest" \
   .

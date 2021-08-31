@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ARG VERSION=0.1.0
+ARG VERSION=NOT-SET
 ARG BUILD_DATE=NOT-SET
 ARG VCS_REF=NOT-SET
 
@@ -23,7 +23,8 @@ RUN groupadd --gid 1000 app && \
     mkdir -p /data && \
     echo $VERSION.$BUILD_DATE > /data/build_$VERSION.$BUILD_DATE.txt
 
-COPY setup_* /data/
+COPY version.txt /data
+ADD resources/data /data
 RUN cd /data && \
     ./setup_01_java.sh && \
     ./setup_02_osgi-starterkit.sh

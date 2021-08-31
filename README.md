@@ -9,6 +9,7 @@ docker build \
   --progress=plain \
   --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
   --build-arg VCS_REF=$(git rev-list -1 HEAD) \
+  --build-arg VERSION=`cat version.txt` \
   -t klibio/osgi-starterkit:latest \
   .
 ```
