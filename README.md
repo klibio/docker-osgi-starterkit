@@ -1,3 +1,4 @@
+![build and docker publish](https://github.com/klibio/docker-osgi-starterkit/blob/main/.github/workflows/actions_build.yml/badge.svg)
 # docker-osgi-starterkit
 
 Build the container with 
