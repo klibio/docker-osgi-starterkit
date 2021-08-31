@@ -25,8 +25,8 @@ docker build \
   .
 
 echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push "$IMAGE:$DATE"
-echo "# successfully pushed $IMAGE:$DATE to DockerHub https://hub.docker.com/r/$IMAGE"
+docker push "$IMAGE:$VERSION.$DATE"
+echo "# successfully pushed $IMAGE:$VERSION.$DATE to DockerHub https://hub.docker.com/r/$IMAGE"
 if [ "$BRANCH" = "main" ]; then
   docker push "$IMAGE:latest"
   echo "# successfully updated $IMAGE:latest image on DockerHub https://hub.docker.com/r/$IMAGE"
