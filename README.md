@@ -1,3 +1,4 @@
+![build and docker publish](https://github.com/klibio/docker-osgi-starterkit/actions/workflows/actions_build.yml/badge.svg)
 # docker-osgi-starterkit
 This repo is providing the [Eclipse Equinox OSGi starter kits](https://www.eclipse.org/equinox/) inside a docker container
 
