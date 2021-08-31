@@ -19,7 +19,7 @@ and/or run container interactively
 docker container run \
     --name osgi \
     --rm \
-    -it klibio/osgi-starterkit
+    -it klibio/osgi-starterkit:latest
 ```
 
 execute osgi shell commands e.g.

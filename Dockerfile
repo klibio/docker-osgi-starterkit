@@ -1,13 +1,13 @@
 FROM debian:buster-slim
 
 ARG VERSION=0.1.0
-ARG BUILD_DATE
-ARG VCS_REF
+ARG BUILD_DATE=NOT-SET
+ARG VCS_REF=NOT-SET
 
 LABEL org.opencontainers.image.authors="dev@klib.io" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VERSION.$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/klibio/io.klib.docker.osgi-starterkit" \
+      org.label-schema.vcs-url="https://github.com/klibio/docker-osgi-starterkit" \
       org.label-schema.vcs-ref=$VCS_REF
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
